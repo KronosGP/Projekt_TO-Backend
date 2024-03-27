@@ -11,12 +11,14 @@ public class OperationClass {
     private List<String> columnName;
 
     private List<WhereStatemant> whereStatemant;
+    private List<String> whereConn;
     private List<SetStatemant> setStatemant;
 
     public OperationClass() {
         this.columnName = new ArrayList<>();
         this.whereStatemant=new ArrayList<>();
         this.setStatemant=new ArrayList<>();
+        this.whereConn=new ArrayList<>();
     }
 
     public String getTableName() {
@@ -29,6 +31,10 @@ public class OperationClass {
 
     protected void addColumn(String nazwa){
         this.columnName.add(nazwa);
+    }
+
+    public void addWhereConn(String conn){
+        this.whereConn.add(conn);
     }
 
     public List<String> getColumnName() {
@@ -44,15 +50,18 @@ public class OperationClass {
     }
 
     public String getWhereString() {
-        String returnetString=" where ";
-        for (int i = 0; i < whereStatemant.size() - 1; i++)
-            returnetString += whereStatemant.get(i).toString() + " and ";
-        returnetString += whereStatemant.get(whereStatemant.size() - 1).toString();
+        String returnetString="";
+        if(!whereStatemant.isEmpty()) {
+            returnetString = "\nwhere ";
+            for (int i = 0; i < whereStatemant.size() - 1; i++)
+                returnetString += whereStatemant.get(i).toString() + " "+whereConn.get(i)+" ";
+            returnetString += whereStatemant.get(whereStatemant.size() - 1).toString();
+        }
         return returnetString;
     }
 
     public String getSetString() {
-        String returnetString=" set ";
+        String returnetString="\nset ";
         for (int i = 0; i < setStatemant.size() - 1; i++)
             returnetString += setStatemant.get(i).toString() + ", ";
         returnetString += setStatemant.get(setStatemant.size() - 1).toString();
