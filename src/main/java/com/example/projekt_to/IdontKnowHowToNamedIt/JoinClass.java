@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class JoinClass {
+    //todo przenieść do folderu statemant, podpiąć klasę statemant oraz napisać toString aby rozróżniał kolumne od wartość
     private String joinType;
     private String tableName;
     private List<WhereStatemant> Connect=new ArrayList<>();

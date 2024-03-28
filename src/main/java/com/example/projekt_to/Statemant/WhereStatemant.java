@@ -2,7 +2,7 @@ package com.example.projekt_to.Statemant;
 
 public class WhereStatemant extends Statemant {
 
-    public WhereStatemant(String columnName, String value, String sign) {
+    public WhereStatemant(String columnName, Object value, String sign) {
         super();
         setColumnName(columnName);
         setValue(value);

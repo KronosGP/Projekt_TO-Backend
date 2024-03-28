@@ -40,15 +40,22 @@ public class test {
                 select.setTableName("asd");
                 select.addJoin("zxc", new String[]{"col1", "=", "col2"}, "Left Outer");
                 select.addColumnName("qwerty");
-                select.addWhere("maina", ">", "3");
+                select.addWhere("maina", ">", 3);
                 select.addWhereConn(" or ");
                 select.addWhere("maina2", "<", "0");
-                System.out.println(select.toString());
+
+                SelectClass select2 = new SelectClass();
+                select2.setTableName("asd");
+                select2.addJoin("zxc", new String[]{"col1", "=", "col2"}, "Left Outer");
+                select2.addColumnName("qwerty");
+                select2.addWhere("maina", ">", select);
+                System.out.println(select2.toString());
                 break;
             case 4:
                 InsertClass insert = new InsertClass();
                 insert.setTableName("asd");
-                insert.addSet("qwerty","value");
+                insert.addSet("qwerty",22);
+                insert.addSet("qwerty2",2);
                 System.out.println(insert.toString());
                 break;
             case 5:
@@ -62,10 +69,10 @@ public class test {
             case 6:
                 UpdateClass update = new UpdateClass();
                 update.setTableName("asd");
-                update.addSet("zxc", "value");
+                update.addSet("zxc", 22);
                 update.addWhere("maina", ">", "3");
                 update.addWhereConn("or");
-                update.addWhere("maina2", "<", "0");
+                update.addWhere("maina2", "<",22);
                 System.out.println(update.toString());
                 break;
         }

@@ -2,12 +2,8 @@ package com.example.projekt_to.Statemant;
 
 public class Statemant {
     private String columnName;
-    private String value;
+    private Object value;
     private String sign;
-
-    public Statemant() {
-
-    }
 
     public String getColumnName() {
         return columnName;
@@ -17,11 +13,11 @@ public class Statemant {
         this.columnName = columnName;
     }
 
-    public String getValue() {
+    public Object getValue() {
         return value;
     }
 
-    public void setValue(String value) {
+    public void setValue(Object value) {
         this.value = value;
     }
 
@@ -34,6 +30,16 @@ public class Statemant {
     }
 
     public String getString() {
-        return  columnName+" "+ sign+" "+value;
+        String returntingValue=columnName+" "+ sign;
+        if(value.getClass().getSimpleName().equals("String"))
+            returntingValue+=" '"+value+"'";
+        else if (value.getClass().getSimpleName().equals("Integer")) {
+            returntingValue+=" "+value;
+        }
+        else
+        {
+            returntingValue+=" ("+value.toString()+")";
+        }
+        return  returntingValue;
     }
 }

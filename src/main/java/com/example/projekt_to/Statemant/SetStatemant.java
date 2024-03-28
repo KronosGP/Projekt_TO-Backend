@@ -1,7 +1,7 @@
 package com.example.projekt_to.Statemant;
 
 public class SetStatemant extends Statemant {
-    public SetStatemant(String columnName, String value) {
+    public SetStatemant(String columnName, Object value) {
         super();
         setColumnName(columnName);
         setValue(value);

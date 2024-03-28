@@ -75,10 +75,10 @@ public class OperationClass {
         return setStatemant;
     }
 
-    public void addWhere(String Column,String Sign, String value) {
+    public void addWhere(String Column,String Sign, Object value) {
         whereStatemant.add(new WhereStatemant(Column,value,Sign));
     }
-    public void addSet(String Column, String value) {
+    public void addSet(String Column, Object value) {
         setStatemant.add(new SetStatemant(Column,value));
     }
 }
