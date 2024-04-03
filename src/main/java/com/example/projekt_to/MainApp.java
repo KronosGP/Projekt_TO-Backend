@@ -7,12 +7,12 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class CreationApplication extends Application {
+public class MainApp extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(CreationApplication.class.getResource("creation-window.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("sidebar.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1000, 600);
-        stage.setTitle("Okno tworzenia");
+        stage.setTitle("MySQL Designer");
         stage.setScene(scene);
         stage.show();
     }
