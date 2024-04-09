@@ -1,10 +1,12 @@
 package com.example.projekt_to.Table;
 
+import com.example.projekt_to.Enums;
+
 public class FieldClass {
     private boolean IsPrimeryKey=false;
     private boolean IsForeignKey=false;
     private boolean Unique=false;
-    private String FieldType;
+    private Enums.eFieldType FieldType= Enums.eFieldType.INTIGER;
     private int FieldSize1;
     private int FieldSize2;
 
@@ -32,11 +34,11 @@ public class FieldClass {
         Unique = unique;
     }
 
-    public String getFieldType() {
+    public Enums.eFieldType getFieldType() {
         return FieldType;
     }
 
-    public void setFieldType(String fieldType) {
+    public void setFieldType(Enums.eFieldType fieldType) {
         FieldType = fieldType;
     }
 
@@ -66,4 +68,7 @@ public class FieldClass {
 
     private String FieldName;
 
+    public void setFieldType(int nextInt) {
+        FieldType=Enums.eFieldType.values()[nextInt];
+    }
 }

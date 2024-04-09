@@ -4,6 +4,9 @@ import com.example.projekt_to.DataOperations.DeleteClass;
 import com.example.projekt_to.DataOperations.InsertClass;
 import com.example.projekt_to.DataOperations.SelectClass;
 import com.example.projekt_to.DataOperations.UpdateClass;
+import com.example.projekt_to.Table.FieldClass;
+import com.example.projekt_to.Table.TableClass;
+import com.example.projekt_to.TableOperation.CreateTable;
 
 import java.util.Scanner;
 
@@ -16,6 +19,7 @@ public class test {
                 "4. Insert\n" +
                 "5. Delete\n" +
                 "6. Update\n" +
+                "7. Dodaj tabele\n" +
                 "Wybierz:");
         Scanner myObj = new Scanner(System.in);
         Object test="asd";
@@ -74,6 +78,54 @@ public class test {
                 update.addWhereConn("or");
                 update.addWhere("maina2", "<",22);
                 System.out.println(update.toString());
+                break;
+            case 7:
+                System.out.println("Podaj nazwe tabeli");
+                myObj.nextLine();
+                String name=myObj.nextLine();
+                TableClass tableClass=new TableClass(name);
+                FieldClass field;
+                int tele;
+                do{
+
+                    field = new FieldClass();
+                    System.out.println("Podaj nazwe columny");
+                    field.setFieldName(myObj.nextLine());
+
+                    for (Enums.eFieldType f:Enums.eFieldType.values()) {
+                        System.out.println(f.ordinal()+" "+f.toString());
+                    };
+                    System.out.println("Podaj typ pola");
+                    field.setFieldType(myObj.nextInt());
+                    myObj.nextLine();
+
+                    System.out.println("Podaj pierwszy rozmiar");
+                    field.setFieldSize1(myObj.nextInt());
+                    myObj.nextLine();
+
+                    System.out.println("Podaj drugi rozmiar");
+                    field.setFieldSize2(myObj.nextInt());
+                    myObj.nextLine();
+
+                    System.out.println("Klucz główny");
+                    field.setPrimeryKey(myObj.nextBoolean());
+                    myObj.nextLine();
+
+                    System.out.println("Klucz obcy");
+                    field.setForeignKey(myObj.nextBoolean());
+                    myObj.nextLine();
+
+                    System.out.println("Klucz unikalny");
+                    field.setUnique(myObj.nextBoolean());
+                    myObj.nextLine();
+
+                    System.out.println("Czy nastepny");
+                    tableClass.addField(field);
+                    tele=myObj.nextInt();
+                    myObj.nextLine();
+                }while(tele!=0);
+                CreateTable newTable=new CreateTable();
+                System.out.println(newTable.getString(tableClass));
                 break;
         }
     }

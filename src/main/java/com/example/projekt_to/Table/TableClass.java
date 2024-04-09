@@ -1,10 +1,11 @@
 package com.example.projekt_to.Table;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class TableClass {
     private String TableName;
-    private List<FieldClass> Fields;
+    private List<FieldClass> Fields=new ArrayList<>();
 
     public TableClass(String TableName){
         this.TableName=TableName;
@@ -15,6 +16,10 @@ public class TableClass {
 
     public String getTableName() {
         return TableName;
+    }
+
+    public List<FieldClass> getFields(){
+        return Fields;
     }
 
 }
